@@ -19,7 +19,7 @@ def go_to_cafe(friends: list[dict],
     if friends_are_vaccinated is False:
         return "All friends should be vaccinated"
 
-    if needed_masks:
+    if needed_masks > 0:
         return f"Friends should buy {needed_masks} masks"
 
     return f"Friends can go to {cafe.name}"
