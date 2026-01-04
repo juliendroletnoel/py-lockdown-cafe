@@ -1,7 +1,5 @@
 from app.cafe import Cafe
-from app.errors import NotVaccinatedError
-from app.errors import OutdatedVaccineError
-from app.errors import NotWearingMaskError
+from app.errors import VaccineError, NotWearingMaskError
 
 
 def go_to_cafe(friends: list[dict],
@@ -13,9 +11,7 @@ def go_to_cafe(friends: list[dict],
 
         try:
             cafe.visit_cafe(visitor=friend)
-        except NotVaccinatedError:
-            friends_are_vaccinated = False
-        except OutdatedVaccineError:
+        except VaccineError:
             friends_are_vaccinated = False
         except NotWearingMaskError:
             needed_masks += 1
@@ -23,7 +19,7 @@ def go_to_cafe(friends: list[dict],
     if friends_are_vaccinated is False:
         return "All friends should be vaccinated"
 
-    if needed_masks != 0:
+    if needed_masks:
         return f"Friends should buy {needed_masks} masks"
 
     return f"Friends can go to {cafe.name}"
