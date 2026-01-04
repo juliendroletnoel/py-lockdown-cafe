@@ -6,7 +6,7 @@ class NotVaccinatedError(VaccineError):
     pass
 
 
-class OutdatedVacineError(VaccineError):
+class OutdatedVaccineError(VaccineError):
     pass
 
 
